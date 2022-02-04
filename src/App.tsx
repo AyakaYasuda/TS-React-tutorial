@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useQuery } from 'react-query';
 
 // mui components
+import Item from './Item/Item';
 import { Drawer } from '@mui/material';
 import { LinearProgress } from '@mui/material';
 import { Grid } from '@mui/material';
@@ -11,7 +12,7 @@ import { Badge } from '@mui/material';
 // styles
 import { Wrapper } from './App.Styles';
 
-//types
+// types
 export type CartItemType = {
   id: number;
   category: string;
@@ -35,14 +36,24 @@ const App = () => {
 
   const getTotalItems = () => null;
 
-  const handleAddToCart = () => null;
+  const handleAddToCart = (clicedItem: CartItemType) => null;
 
   const handleRemoveFromCart = () => null;
 
   if (isLoading) return <LinearProgress />;
   if (error) return <div>Something went wrong...</div>;
 
-  return <div className='App'>Start</div>;
+  return (
+    <Wrapper>
+      <Grid container spacing={3}>
+        {data?.map(item => (
+          <Grid item key={item.id} xs={12} sm={4}>
+            <Item item={item} handleAddToCart={handleAddToCart} />
+          </Grid>
+        ))}
+      </Grid>
+    </Wrapper>
+  );
 };
 
 export default App;
