@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
 
 // styles
-import { Wrapper } from './Item.Style';
+import { Wrapper } from './Item.Styles';
 
 // types
 import { CartItemType } from '../App';
